@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    text-decoration: none ;
+    list-style: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+}
+:root {
+    --main-color: floralwhite;
+    --second-color: pink;
+}
+section{
+    padding: 50px 10%;
+}
+*::selection{
+    color: floralwhite;
+    background: pink;
+}
+img {
+    width: 200%;
+}
+header {
+position: fixed;
+width: 100%;
+top: 0;
+right: 0;
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: space-between;
+background: pink;
+padding: 15px 10%;
+transition: 0.2s;
+}
+.logo {
+display: flex;
+align-items: center;
+}
+.logo img {
+width: 40px;
+}
+.navbar{
+display: flex;
+}
+.navbar a{
+font-size: 1rem;
+padding: 11px 20px;
+color: palevioletred;
+font-weight: 600;
+text-transform: uppercase;
+}
+.navbar a:hover {
+    color: floralwhite ;
+}
+.home{
+    min-height: 60vh;
+    display: flex;
+    flex-wrap: wrap;
+    background: #ebdbc8;
+    gap: 8rem;
+    margin-top: 50px;
+}
+.home-text {
+   flex: 1 1 1rem;
+   font-style: italic;
+}
+.home-img{
+    width: 100;
+    height: 100; 
+}
+.home-text span{
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+}
+.home-text h4 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: palevioletred;
+   
+}
+.home-smlogo{
+    width: 20px;
+    
+}
