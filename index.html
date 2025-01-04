@@ -11,8 +11,81 @@
     {
         background-color: floralwhite;
     }
+    #clock 
+    {
+        display: none; 
+        justify-content: center;
+        align-items: center;
+        border: 2px;
+        border-radius: 10px;
+        color: saddlebrown;
+        background-color: burlywood;
+        width: 100px;
+        height: 30;
+        margin-left: 480;
+        display: inline-flex;
+        margin-top: -159px;
+    }
+    #customAlert 
+    {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      visibility: hidden; 
+      opacity: 0;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    #customAlert .alertBox 
+    {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+    }
+    #customAlert .alertBox h1 
+    {
+      font-size: 1.5rem;
+      color: #333;
+    }
+    #customAlert .alertBox p
+    {
+      font-size: 1rem;
+      color: #666;
+    }
+    #customAlert .alertBox button 
+    {
+      background-color: #ff8cb8;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 15px;
+      transition: background-color 0.2s ease;
+    }
+    #customAlert .alertBox button:hover 
+    {
+      background-color: #ff709a;
+    }
+    #customAlert.show 
+    {
+      visibility: visible;
+      opacity: 1;
+    }
     </style>
     <body>
+        
         <header>
             <a href="#home" class="logo"><img src="img/rose.png" alt="rose"></a>
             <ul class="navbar">
@@ -24,8 +97,7 @@
              <li><a href="family.html">Family</a></li>
             </ul>
         </header> 
-        
-        
+
         <section class="home" id="home">
         <div class="home-title">
             <h1> H O M E </h1>
@@ -63,12 +135,10 @@
                     <source src="audio/Idea22-index.mp3" type="audio/mpeg">
                 </audio>
             </div>
-            <div class="email">
-                <a href="mailto:norazreen204@gmail.com">EMAIL ME</a>
-            </div>
-        </div>
-        
-        </section>
+            <div id="clock"></div>
+        </section> 
+
+        <br>
         <section class="aboutme" id="aboutme">
             <style>
                 video {
@@ -124,13 +194,14 @@
                 </h2>
             </div>
             <br>
-            <div class="top-button">
+            <div class="top-button-home">
             <h4><a href="#top">Back To Top</a></h4>
             </div>
 
         </section>
     <style>
-        footer {
+        footer 
+        {
            text-align: center;
            padding: 3px;
            background-color: pink;
@@ -142,5 +213,50 @@
             Copyright<sup>©</sup>2024; Designed by Nor Azreen <sub> ⋅˚₊‧ ୨୧ ‧₊˚ ⋅</sub>
          </p>
     </footer>
+    <div id="customAlert">
+        <div class="alertBox">
+          <h1>Welcome to Reen's Website ˚ʚ♡ɞ˚</h1>
+          <p>Click OK to continue</p>
+          <button onclick="closeAlert()">OK</button>
+        </div>
+      </div>
+    
+      <script>
+        // Function to show the custom alert
+        function showAlert() 
+        {
+          document.getElementById('customAlert').classList.add('show');
+        }
+    
+        // Function to close the custom alert
+        function closeAlert() 
+        {
+          document.getElementById('customAlert').classList.remove('show');
+          showClockPopup(); // Show clock after closing alert
+        }
+    
+        // Function to update the clock
+        function updateClock() 
+        {
+          const now = new Date();
+          const hours = now.getHours().toString().padStart(2, "0");
+          const minutes = now.getMinutes().toString().padStart(2, "0");
+          const seconds = now.getSeconds().toString().padStart(2, "0");
+          const timeString = `${hours}:${minutes}:${seconds}`;
+          document.getElementById('clock').textContent = timeString;
+        }
+    
+        // Show the clock popup and start updating
+        function showClockPopup() 
+        {
+          const clockPopup = document.getElementById('clock');
+          clockPopup.style.display = 'flex';
+          setInterval(updateClock, 1000);
+          updateClock(); // Update immediately
+        }
+    
+        // Combine both actions on page load
+        window.onload = showAlert;
+      </script>
     </body>
 </html>
